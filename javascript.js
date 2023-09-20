@@ -12,9 +12,10 @@ const choice = ["rock", "paper", "scissors"];
 function getComputerChoice() {
     let random = Math.floor(Math.random() * choice.length);
     return choice[random];
-}
+};
 
 //the player selection is prompted and case insensitive
-let playerSelection = prompt("Choose one: Rock, Paper or Scissors?", "");
-playerSelection = playerSelection.toLowerCase();
-
+function playerSelection() {
+    let playerSelection = prompt("Choose one: Rock, Paper or Scissors?", "");
+    return playerSelection = playerSelection.toLowerCase();
+};
