@@ -15,7 +15,33 @@ function getComputerChoice() {
 };
 
 //the player selection is prompted and case insensitive
-function playerSelection() {
-    let playerSelection = prompt("Choose one: Rock, Paper or Scissors?", "");
-    return playerSelection = playerSelection.toLowerCase();
+function getPlayerSelection() {
+    let playerChoice = prompt("Choose one: Rock, Paper or Scissors?", "");
+    return playerChoice = playerChoice.toLowerCase();
 };
+
+
+// winning conditions
+function playRound(computerSelection, playerSelection) {
+    if (computerSelection === "rock" && playerSelection === "paper") {
+        return "You win! Paper beats Rock!";
+    } else if (computerSelection === "rock" && playerSelection === "scissors") {
+        return "You lose! Rock beats Scissors!";
+    } else if (computerSelection === "rock" && playerSelection === "rock") {
+        return "That's a tie! Rock vs. Rock!";
+    } else if (computerSelection === "paper" && playerSelection === "scissors") {
+        return "You win!  Scissors beats Paper!";
+    } else if (computerSelection === "paper" && playerSelection === "rock") {
+        return "You lose! Paper beats Rock!";
+    } else if (computerSelection === "paper" && playerSelection === "paper") {
+        return "That's a tie! Paper vs. Paper ";
+    } else if (computerSelection === "scissors" && playerSelection === "rock") {
+        return "You win! Rock beats Scissors!";
+    } else if (computerSelection === "scissors" && playerSelection === "paper") {
+        return "You lose! Scissors beats Paper!";
+    } else if (computerSelection === "scissors" && playerSelection === "scissors") {
+        return "That's a tie! Scissors vs. Scissors";
+    } else {
+        return "An error occured!";
+    }
+}
