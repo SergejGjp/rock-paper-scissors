@@ -2,7 +2,7 @@
 //
 //The code prompts one option from the user "rock, paper or scissors", the input is case-insensitive
 //The computer choice is a random choice out of the three options.
-//A single game is using two parameters, the user choice and the random computer choice. The function checks if the winning conditions is met and then returns a string.
+//A single game is using two parameters, the user choice and the random computer choice. The function checks if the winning conditions is met and then returns a string and adds a point to the score.
 //The game consists out of 5 rounds and tracks score, in the end the winner is announced.
 
 
@@ -35,7 +35,7 @@ function playRound(computerSelection, playerSelection) {
         return "That's a tie! Rock vs. Rock!";
     } else if (computerSelection === "paper" && playerSelection === "scissors") {
         scorePlayer += 1;
-        return "You win!  Scissors beats Paper!";
+        return "You win! Scissors beats Paper!";
     } else if (computerSelection === "paper" && playerSelection === "rock") {
         scoreComputer += 1;
         return "You lose! Paper beats Rock!";
@@ -51,5 +51,34 @@ function playRound(computerSelection, playerSelection) {
         return "That's a tie! Scissors vs. Scissors";
     } else {
         return "An error occured!";
+    };
+};
+
+// game function for 5 rounds.
+function game() {
+    for (let i = 1; i <= 5; i++) {
+        console.log("Round " + i + ":");
+        let computerSelection = getComputerChoice();
+        let playerSelection = getPlayerSelection();
+        console.log("Computer Choice: " + computerSelection);
+        console.log("Player Choice: " + playerSelection);
+        console.log(playRound(computerSelection, playerSelection));
+        console.log("The Computer Score is: " + scoreComputer);
+        console.log("The Player Score is: " + scorePlayer);
+    };
+    if (scorePlayer > scoreComputer) {
+        alert(`You won the game! 
+                The computer score is: ${scoreComputer}
+                Your score is: ${scorePlayer}`);
+    } else if (scoreComputer == scorePlayer) {
+        alert(`That is a tie! 
+        The computer score is: ${scoreComputer}
+        Your score is: ${scorePlayer}`)
+    } else {
+        alert(`You lose the game, sorry :(
+            The computer score is: ${scoreComputer}
+            Your score is: ${scorePlayer}`);
     }
-}
+};
+
+game();
