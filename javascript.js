@@ -5,6 +5,8 @@
 //A single game is using two parameters, the user choice and the random computer choice. The function checks if the winning conditions is met and then returns a string.
 //The game consists out of 5 rounds and tracks score, in the end the winner is announced.
 
+
+//Computer choice is random
 const choice = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -12,4 +14,7 @@ function getComputerChoice() {
     return choice[random];
 }
 
-console.log(getComputerChoice());
+//the player selection is prompted and case insensitive
+let playerSelection = prompt("Choose one: Rock, Paper or Scissors?", "");
+playerSelection = playerSelection.toLowerCase();
+
