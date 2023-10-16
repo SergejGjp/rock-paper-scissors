@@ -14,11 +14,25 @@ function getComputerChoice() {
     return choice[random];
 };
 
+let playerChoice;
+let rockBtn = document.querySelector("#rock");
+rockBtn.addEventListener("click", () => playerChoice = "rock");
+
+let paperBtn = document.querySelector("#paper");
+paperBtn.addEventListener("click", () => playerChoice = "paper");
+
+let scissorsBtn = document.querySelector("#scissors");
+scissorsBtn.addEventListener("click", () => playerChoice = "scissors");
+
+
 //the player selection is prompted and case insensitive
-function getPlayerSelection() {
-    let playerChoice = prompt("Choose one: Rock, Paper or Scissors?", "");
-    return playerChoice = playerChoice.toLowerCase();
-};
+
+// function getPlayerSelection() {
+//     // let playerChoice = prompt("Choose one: Rock, Paper or Scissors?", "");
+//     // return playerChoice = playerChoice.toLowerCase();
+// };
+
+
 
 let scoreComputer = 0;
 let scorePlayer = 0;
@@ -54,31 +68,31 @@ function playRound(computerSelection, playerSelection) {
     };
 };
 
-// game function for 5 rounds.
-function game() {
-    for (let i = 1; i <= 5; i++) {
-        console.log("Round " + i + ":");
-        let computerSelection = getComputerChoice();
-        let playerSelection = getPlayerSelection();
-        console.log("Computer Choice: " + computerSelection);
-        console.log("Player Choice: " + playerSelection);
-        console.log(playRound(computerSelection, playerSelection));
-        console.log("The Computer Score is: " + scoreComputer);
-        console.log("The Player Score is: " + scorePlayer);
-    };
-    if (scorePlayer > scoreComputer) {
-        alert(`You won the game! 
-                The computer score is: ${scoreComputer}
-                Your score is: ${scorePlayer}`);
-    } else if (scoreComputer == scorePlayer) {
-        alert(`That is a tie! 
-        The computer score is: ${scoreComputer}
-        Your score is: ${scorePlayer}`)
-    } else {
-        alert(`You lose the game, sorry :(
-            The computer score is: ${scoreComputer}
-            Your score is: ${scorePlayer}`);
-    }
-};
+// // game function for 5 rounds.
+// function game() {
+//     for (let i = 1; i <= 5; i++) {
+//         console.log("Round " + i + ":");
+//         let computerSelection = getComputerChoice();
+//         let playerSelection = getPlayerSelection();
+//         console.log("Computer Choice: " + computerSelection);
+//         console.log("Player Choice: " + playerSelection);
+//         console.log(playRound(computerSelection, playerSelection));
+//         console.log("The Computer Score is: " + scoreComputer);
+//         console.log("The Player Score is: " + scorePlayer);
+//     };
+//     if (scorePlayer > scoreComputer) {
+//         alert(`You won the game! 
+//                 The computer score is: ${scoreComputer}
+//                 Your score is: ${scorePlayer}`);
+//     } else if (scoreComputer == scorePlayer) {
+//         alert(`That is a tie! 
+//         The computer score is: ${scoreComputer}
+//         Your score is: ${scorePlayer}`)
+//     } else {
+//         alert(`You lose the game, sorry :(
+//             The computer score is: ${scoreComputer}
+//             Your score is: ${scorePlayer}`);
+//     }
+// };
 
-game();
+//game();
