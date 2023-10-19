@@ -1,11 +1,3 @@
-//Rock Paper Scissors Game in Browser Console.
-//
-//The code prompts one option from the user "rock, paper or scissors", the input is case-insensitive
-//The computer choice is a random choice out of the three options.
-//A single game is using two parameters, the user choice and the random computer choice. The function checks if the winning conditions is met and then returns a string and adds a point to the score.
-//The game consists out of 5 rounds and tracks score, in the end the winner is announced.
-
-
 //Computer choice is random
 const choice = ["rock", "paper", "scissors"];
 let scoreComputer = 0;
@@ -13,7 +5,15 @@ let scorePlayer = 0;
 let roundCounter = 0;
 let result = "";
 let computerSelection;
+let finalResult = document.createElement("p");
+let pScore = document.querySelector("#player-result");
+let cScore = document.querySelector("#com-result")
+let round = document.querySelector("#round");
+let roundResult = document.querySelector("#round-result")
+let comChoice = document.querySelector("#com-choice");
+let div = document.querySelector("#result")
 
+//to get a random choice by the computer
 function getComputerChoice() {
     let random = Math.floor(Math.random() * choice.length);
     computerSelection = choice[random]
@@ -29,16 +29,7 @@ paperBtn.addEventListener("click", () => playRound(getComputerChoice(), paperBtn
 let scissorsBtn = document.querySelector("#scissors");
 scissorsBtn.addEventListener("click", () => playRound(getComputerChoice(), scissorsBtn.value));
 
-
-//the player selection is prompted and case insensitive
-
-// function getPlayerSelection() {
-//     // let playerChoice = prompt("Choose one: Rock, Paper or Scissors?", "");
-//     // return playerChoice = playerChoice.toLowerCase();
-// };
-
-
-// winning conditions
+// winning conditions and check if someone has won the game
 function playRound(computerSelection, playerSelection) {
     roundCounter += 1;
     if (computerSelection === "rock" && playerSelection === "paper") {
@@ -82,68 +73,33 @@ function playRound(computerSelection, playerSelection) {
     };
 };
 
-let finalResult = document.createElement("p");
-let pScore = document.querySelector("#player-result");
-let cScore = document.querySelector("#com-result")
-let round = document.querySelector("#round");
-let roundResult = document.querySelector("#round-result")
-let comChoice = document.querySelector("#com-choice");
-let div = document.querySelector("#result")
-
+//for showing the result of each round
 function addResult() {
     round.textContent = roundCounter;
     pScore.textContent = scorePlayer;
     cScore.textContent = scoreComputer;
     comChoice.textContent = capitalize(computerSelection);
     roundResult.textContent = result;
-}
+};
 
+//for returning the computer choice capitalized
 function capitalize(myString) {
-    //let lowerCase = myString.toLowerCase();
     let firstChar = myString.charAt(0).toUpperCase();
     let newString = myString.replace(myString.charAt(0), firstChar);
     return newString;
-}
+};
 
+//after the game ended the buttons are disabled
 function disableBtn() {
     rockBtn.disabled = true;
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
-}
+};
 
+//for reloading the page and starting a new game
 function startNewGame() {
     let newGameBtn = document.createElement("button");
     newGameBtn.textContent = "Play again?";
     div.appendChild(newGameBtn);
     newGameBtn.addEventListener("click", () => document.location.reload());
-}
-
-
-// // game function for 5 rounds.
-// function game() {
-//     for (let i = 1; i <= 5; i++) {
-//         console.log("Round " + i + ":");
-//         let computerSelection = getComputerChoice();
-//         let playerSelection = getPlayerSelection();
-//         console.log("Computer Choice: " + computerSelection);
-//         console.log("Player Choice: " + playerSelection);
-//         console.log(playRound(computerSelection, playerSelection));
-//         console.log("The Computer Score is: " + scoreComputer);
-//         console.log("The Player Score is: " + scorePlayer);
-//     };
-//     if (scorePlayer > scoreComputer) {
-//         alert(`You won the game! 
-//                 The computer score is: ${scoreComputer}
-//                 Your score is: ${scorePlayer}`);
-//     } else if (scoreComputer == scorePlayer) {
-//         alert(`That is a tie! 
-//         The computer score is: ${scoreComputer}
-//         Your score is: ${scorePlayer}`)
-//     } else {
-//         alert(`You lose the game, sorry :(
-//             The computer score is: ${scoreComputer}
-//             Your score is: ${scorePlayer}`);
-//     }
-// };
-
-//game();
+};
