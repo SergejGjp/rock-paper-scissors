@@ -12,10 +12,12 @@ let scoreComputer = 0;
 let scorePlayer = 0;
 let roundCounter = 0;
 let result = "";
+let computerSelection;
 
 function getComputerChoice() {
     let random = Math.floor(Math.random() * choice.length);
-    return choice[random];
+    computerSelection = choice[random]
+    return computerSelection;
 };
 
 let rockBtn = document.querySelector("#rock");
@@ -68,7 +70,7 @@ function playRound(computerSelection, playerSelection) {
     };
     addResult();
     if (scorePlayer === 5) {
-        finalResult.textContent = "The player has won 5 times! You are the winner of the Game!";
+        finalResult.textContent = "You won 5 times! You are the winner of the Game!";
         div.appendChild(finalResult);
         disableBtn();
         startNewGame();
@@ -85,12 +87,22 @@ let pScore = document.querySelector("#player-result");
 let cScore = document.querySelector("#com-result")
 let round = document.querySelector("#round");
 let roundResult = document.querySelector("#round-result")
+let comChoice = document.querySelector("#com-choice");
 let div = document.querySelector("#result")
+
 function addResult() {
     round.textContent = roundCounter;
     pScore.textContent = scorePlayer;
     cScore.textContent = scoreComputer;
+    comChoice.textContent = capitalize(computerSelection);
     roundResult.textContent = result;
+}
+
+function capitalize(myString) {
+    //let lowerCase = myString.toLowerCase();
+    let firstChar = myString.charAt(0).toUpperCase();
+    let newString = myString.replace(myString.charAt(0), firstChar);
+    return newString;
 }
 
 function disableBtn() {
