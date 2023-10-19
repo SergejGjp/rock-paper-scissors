@@ -67,18 +67,43 @@ function playRound(computerSelection, playerSelection) {
         result = "An error occured!";
     };
     addResult();
+    if (scorePlayer === 5) {
+        finalResult.textContent = "The player has won 5 times! You are the winner of the Game!";
+        div.appendChild(finalResult);
+        disableBtn();
+        startNewGame();
+    } else if (scoreComputer === 5) {
+        finalResult.textContent = "The computer has won 5 times! You lose the Game!";
+        div.appendChild(finalResult);
+        disableBtn();
+        startNewGame();
+    };
 };
 
-
+let finalResult = document.createElement("p");
 let pScore = document.querySelector("#player-result");
 let cScore = document.querySelector("#com-result")
 let round = document.querySelector("#round");
 let roundResult = document.querySelector("#round-result")
+let div = document.querySelector("#result")
 function addResult() {
     round.textContent = roundCounter;
     pScore.textContent = scorePlayer;
     cScore.textContent = scoreComputer;
     roundResult.textContent = result;
+}
+
+function disableBtn() {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+}
+
+function startNewGame() {
+    let newGameBtn = document.createElement("button");
+    newGameBtn.textContent = "Play again?";
+    div.appendChild(newGameBtn);
+    newGameBtn.addEventListener("click", () => document.location.reload());
 }
 
 
